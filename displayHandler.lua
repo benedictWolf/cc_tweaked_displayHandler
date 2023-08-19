@@ -12,11 +12,11 @@ local displayHandler = {}
     --end
     Button = {}
     Button.__index = self
-    function Button.new(color, bgColor, Pos1x, Pos1y, Pos2x, Pos2y,name, monitor)
+    function Button.new(color, bgColor, Pos1x, Pos1y, Pos2x, Pos2y, name, monitor)
         local instance = setmetatable({}, self)
         Button.name = name
         term.redirect(monitor)
-        paintutils.drawBox(Pos1x, Pos1y, Pos2x, Pos2y, bgColor)
+        paintutils.drawFilledBox(Pos1x, Pos1y, Pos2x, Pos2y, bgColor)
         return instance
     end
 return displayHandler
