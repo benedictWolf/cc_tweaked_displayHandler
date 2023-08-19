@@ -14,7 +14,7 @@ local displayHandler = {}
     function Button.new(color, bgColor, Pos1x, Pos1y, Pos2x, Pos2y,name)
         local instance = setmetatable({}, self)
         Button.name = name
-        paintutils.drawBox(Pos1x, Pos1y, Pos2x, Pos2y)
+        paintutils.drawBox(Pos1x, Pos1y, Pos2x, Pos2y, bgColor)
         return instance
     end
 return displayHandler
