@@ -19,8 +19,8 @@ local displayHandler = {}
         Button.width = Pos2x - (Pos1x - 1)
         term.redirect(monitor)
         paintutils.drawFilledBox(Pos1x, Pos1y, Pos2x, Pos2y, bgColor)
-        Button.leftMargin = Button.width - strlen(name) / 2
-        monitor.setCursorPosition(Pos1x - 1 + Button.leftMargin)
+        Button.leftMargin = Button.width - string.len(name) / 2
+        monitor.setCursorPos(Pos1x - 1 + Button.leftMargin)
         monitor.setTextColor(color)
         monitor.write(name)
         return instance
