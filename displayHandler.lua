@@ -15,8 +15,7 @@ local displayHandler = {}
         name = name or {}
         setmetatable(name, self)
         self.__index = self
-        return name
         paintutils.drawBox(Pos1x, Pos1y, Pos2x, Pos2y)
-    
+        return name
     end
 return displayHandler
