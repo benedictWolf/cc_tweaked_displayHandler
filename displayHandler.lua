@@ -12,7 +12,7 @@ local displayHandler = {}
     --end
     Button = {}
     Button.__index = self
-    function Button.new(color, bgColor, Pos1x, Pos1y, name, monitor, [lMargin, tMargin])
+    function Button.new(color, bgColor, Pos1x, Pos1y, name, monitor, lMargin, tMargin)
         local instance = setmetatable({}, self)
         if lMargin == nil then 
             Button.leftMargin = 2
