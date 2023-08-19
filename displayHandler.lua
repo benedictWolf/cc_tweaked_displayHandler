@@ -12,18 +12,25 @@ local displayHandler = {}
     --end
     Button = {}
     Button.__index = self
-    function Button.new(color, bgColor, Pos1x, Pos1y, Pos2x, Pos2y, name, monitor)
+    function Button.new(color, bgColor, Pos1x, Pos1y, name, monitor, [lMargin, tMargin])
         local instance = setmetatable({}, self)
-        Button.leftMargin = 0
-        Button.topMargin = 0
+        if lMargin == nil then 
+            Button.leftMargin = 2
+        else
+            Button.leftMargin = lMargin
+        end
+        if tMargin == nil then 
+            Button.topMargin = 0
+        else
+            Button.topMargin = tMargin
+        end
         Button.name = name
-        Button.width = Pos2x - (Pos1x - 1)
-        Button.height = Pos2y - (Pos1y - 1)
+        Button.width = string.len(name) + 2 * Button.leftMargin
+        Button.height = 1 + 2 * Button.topMargin
+
         --Button.labellines = 1
         term.redirect(monitor)
-        paintutils.drawFilledBox(Pos1x, Pos1y, Pos2x, Pos2y, bgColor)
-        Button.leftMargin = (Button.width - string.len(name)) / 2
-        Button.topMargin = Button.height / 2
+        paintutils.drawFilledBox(Pos1x, Pos1y, Pos1x + Button.width, Pos1y + Button.height, bgColor)
         monitor.setCursorPos(Pos1x + Button.leftMargin, Pos1y + Button.topMargin)
         monitor.setTextColor(color)
         monitor.write(name)
