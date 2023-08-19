@@ -19,6 +19,7 @@ local displayHandler = {}
     Button.name = 'Button1'
     Button.xPos = 1
     Button.yPos = 1
+    Button.assignedMon = ''
     function Button.new(color, bgColor, Pos1x, Pos1y, name, monitor, lMargin, tMargin)
         local instance = setmetatable({}, self)
         if lMargin == nil then 
@@ -31,21 +32,32 @@ local displayHandler = {}
         else
             Button.topMargin = tMargin
         end
+        Button.monitor = monitor
         Button.xPos = Pos1x
         Button.yPos = Pos1y
         Button.name = name
         Button.width = string.len(name) + 2 * Button.leftMargin
         Button.height = 1 + 2 * Button.topMargin
         Button.assignedMon = monitor
+        Button.bgColor = bgColour
+        Button.Color = colors.black
         --Button.labellines = 1
-        term.redirect(monitor)
-        paintutils.drawFilledBox(Button.xPos, Button.yPos, Button.xPos + Button.width, Button.yPos + Button.height, bgColor)
-        monitor.setCursorPos(Button.xPos + Button.leftMargin, Button.yPos + Button.topMargin)
-        monitor.setTextColor(color)
-        monitor.write(name)
+        Button.setTextColor(color)
         return instance
     end
     function Button.setTextColor(color)
-        monirot
+        term.redirect(Button.assignedMon)
+        local mon = Button.assignedMon -- Refer to the assigned Monitorproperty
+        --paintutils.drawFilledBox(Button.xPos, Button.yPos, Button.xPos + Button.width, Button.yPos + Button.height, Button.bgColor)
+        mon.setCursorPos(Button.xPos + Button.leftMargin, Button.yPos + Button.topMargin)
+        Button.Color = color
+        mon.setTextColor(Button.Color)
+        mon.write(name)
     end
+    function Button.setBgColor(colour)
+        Button.bgColor = color
+        paintutils.drawFilledBox(Button.xPos, Button.yPos, Button.xPos + Button.width, Button.yPos + Button.height, Button.bgColor)
+        Button.setTextColor(Button.Color)
+    end
+    
 return displayHandler
