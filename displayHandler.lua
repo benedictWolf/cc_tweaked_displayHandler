@@ -11,7 +11,7 @@ local displayHandler = {}
     --end
     Button = {}
     Button.__index = self
-    function Button:new(local color, bgColor, Pos1x, Pos1y, Pos2x, Pos2y,name)
+    function Button:new(color, bgColor, Pos1x, Pos1y, Pos2x, Pos2y,name)
         name = name or {}
         setmetatable(name, self)
         self.__index = self
