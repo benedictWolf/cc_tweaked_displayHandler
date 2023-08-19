@@ -11,11 +11,10 @@ local displayHandler = {}
     --end
     Button = {}
     Button.__index = self
-    function Button:new(color, bgColor, Pos1x, Pos1y, Pos2x, Pos2y,name)
-        name = name or {}
-        setmetatable(name, self)
-        self.__index = self
+    function Button.new(color, bgColor, Pos1x, Pos1y, Pos2x, Pos2y,name)
+        local instance = setmetatable({}, self)
+        Button.name = name
         paintutils.drawBox(Pos1x, Pos1y, Pos2x, Pos2y)
-        return name
+        return instance
     end
 return displayHandler
