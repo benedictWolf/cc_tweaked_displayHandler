@@ -12,7 +12,7 @@ local displayHandler = {}
     --end
     Button = {}
     Button.__index = self
-    Button.leftMargin = 2
+    Button.leftMargin = 2 --Verify the necissity of predifining Buttonproperties
     Button.topMargin = 0
     Button.width = 8
     Button.height = 2
@@ -36,7 +36,7 @@ local displayHandler = {}
         Button.name = name
         Button.width = string.len(name) + 2 * Button.leftMargin
         Button.height = 1 + 2 * Button.topMargin
-
+        Button.assignedMon = monitor
         --Button.labellines = 1
         term.redirect(monitor)
         paintutils.drawFilledBox(Button.xPos, Button.yPos, Button.xPos + Button.width, Button.yPos + Button.height, bgColor)
@@ -46,6 +46,6 @@ local displayHandler = {}
         return instance
     end
     function Button.setTextColor(color)
-        
+        monirot
     end
 return displayHandler
