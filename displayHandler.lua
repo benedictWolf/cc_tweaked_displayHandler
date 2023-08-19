@@ -6,9 +6,9 @@ local displayHandler = {}
         instance.name = name
         return instance
     end
-    function displayHandler.getMonitorRatio()
-        peripheral
-    end
+    --function displayHandler.getMonitorRatio()
+    --    peripheral
+    --end
     Button = {}
     Button.__index = self
     function Button:new(local color, bgColor, Pos1x, Pos1y, Pos2x, Pos2y,name)
