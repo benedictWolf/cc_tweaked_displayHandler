@@ -1,6 +1,6 @@
 os.loadAPI('display/displayHandler.lua')
 local monitor = peripheral.wrap('top')
-monitor.clear()
 monitor.setBackgroundColor(colors.black)
+monitor.clear()
 Button1 = displayHandler.Button.new(colors.black, colors.white, 1, 2, 'Test', monitor)
 --print('This file is used to test the module displayHandler!')
